@@ -31,11 +31,16 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
+                   @auth
+                        <ul class="navbar ml-auto">
+                            <li class="nav-item">
+                                <a href="{{ route('posts') }}" class="nav-link">{{ __('Posts') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('post-ist') }}" class="nav-link">{{ __('Posts list') }}</a>
+                            </li>
+                        </ul>
+                   @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
