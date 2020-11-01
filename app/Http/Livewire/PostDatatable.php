@@ -11,6 +11,9 @@ class PostDatatable extends Component
 
     use WithPagination;
     public $headers;
+    public $searchTerm;
+    public $sortColumn = 'created_at';
+    public $sortDirection = 'asc';
 
     public function headerConfig()
     {
@@ -27,10 +30,24 @@ class PostDatatable extends Component
         $this->headers = $this->headerConfig();
     }
 
+    public function hydrate()
+    {
+        $this->headers = $this->headerConfig();
+    }
+
     private function resultData()
     {
-        // return Post::where('user_id', '=', auth()->user()->id)->paginate(5);
-        return Post::paginate(5);
+        return Post::where(function($query){
+            $query->where('id', '>', 0);
+            if($this->searchTerm != '')
+            {
+                $query->where('title', 'like', '%'.$this->searchTerm.'%');
+                $query->where('content', 'like', '%'.$this->searchTerm.'%');
+            }
+
+        })
+        ->orderBy($this->sortColumn, $this->sortDirection)
+        ->paginate(5);
     }
 
     public function render()
@@ -38,5 +55,11 @@ class PostDatatable extends Component
         return view('livewire.post-datatable', [
             'data' => $this->resultData()
         ]);
+    }
+
+    public function sort($column)
+    {
+        $this->sortColumn = $column;
+        $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
     }
 }
