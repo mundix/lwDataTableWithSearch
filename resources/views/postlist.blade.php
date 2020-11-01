@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Post List') }}</div>
 
                 <div class="card-body">
-                    The Post List
+                    @livewire('post-datatable')
                 </div>
             </div>
         </div>

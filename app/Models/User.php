@@ -22,6 +22,8 @@ class User extends Authenticatable
         'password',
     ];
 
+
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -40,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relations
+    */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
