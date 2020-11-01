@@ -1,0 +1,4 @@
+name: lwdatatable
+recipe: lemp
+config:
+  webroot: .
