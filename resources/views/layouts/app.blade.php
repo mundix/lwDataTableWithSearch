@@ -32,7 +32,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                    @auth
-                        <ul class="navbar ml-auto">
+                        <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a href="{{ route('posts') }}" class="nav-link">{{ __('Posts') }}</a>
                             </li>
