@@ -42,7 +42,7 @@ class PostDatatable extends Component
             if($this->searchTerm != '')
             {
                 $query->where('title', 'like', '%'.$this->searchTerm.'%');
-                $query->where('content', 'like', '%'.$this->searchTerm.'%');
+                $query->orWhere('content', 'like', '%'.$this->searchTerm.'%');
             }
 
         })

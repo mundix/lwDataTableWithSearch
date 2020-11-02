@@ -27,7 +27,7 @@
                         </tr>
                     @endforeach
                 @else
-
+                    <tr><td colspan="{{count($headers)}}">No results Found !</td></tr>
                 @endif
             </tbody>
         </table>
